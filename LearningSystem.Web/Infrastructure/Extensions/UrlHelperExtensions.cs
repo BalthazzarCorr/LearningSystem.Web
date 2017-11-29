@@ -1,12 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LearningSystem.Web.Controllers;
-
-namespace Microsoft.AspNetCore.Mvc
+namespace LearningSystem.Web.Infrastructure.Extensions
 {
-    public static class UrlHelperExtensions
+   using Controllers;
+   using Microsoft.AspNetCore.Mvc;
+
+   public static class UrlHelperExtensions
     {
         public static string EmailConfirmationLink(this IUrlHelper urlHelper, string userId, string code, string scheme)
         {
