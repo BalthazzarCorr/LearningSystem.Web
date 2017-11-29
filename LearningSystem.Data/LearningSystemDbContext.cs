@@ -30,9 +30,7 @@
          builder.Entity<Article>().HasOne(c => c.Author).WithMany(c => c.Articles).HasForeignKey(c => c.AuthorId);
 
          base.OnModelCreating(builder);
-         // Customize the ASP.NET Identity model and override the defaults if needed.
-         // For example, you can rename the ASP.NET Identity table names and more.
-         // Add your customizations after calling base.OnModelCreating(builder);
+        
       }
    }
 }
