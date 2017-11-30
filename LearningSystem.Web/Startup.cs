@@ -28,15 +28,22 @@
          services.AddDbContext<LearningSystemDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-         services.AddIdentity<User, IdentityRole>()
-             .AddEntityFrameworkStores<LearningSystemDbContext>()
-             .AddDefaultTokenProviders();
+       
 
-         // Add application services.
+         services.AddIdentity<User, IdentityRole>(options =>
+            {
+               options.Password.RequireDigit = false;
+               options.Password.RequireLowercase = false;
+               options.Password.RequireUppercase = false;
+               options.Password.RequireNonAlphanumeric = false;
+            })
+            .AddEntityFrameworkStores<LearningSystemDbContext>()
+            .AddDefaultTokenProviders();
 
+         
 
-         services.AddMvc();
          services.AddAutoMapper();
+         services.AddMvc();
          services.AddAntiforgery();
          services.AddDomainServices();
       }
@@ -57,9 +64,12 @@
 
          app.UseStaticFiles();
 
+
          app.UseAuthentication();
 
          app.UseMvcWithDefaultRoute();
+
+         app.UseDatabaseMigration();
       }
    }
 }
