@@ -1,19 +1,15 @@
-﻿namespace LearningSystem.Web.Models
+﻿namespace LearningSystem.Data.Models
 {
    using System;
    using System.Collections.Generic;
    using System.ComponentModel.DataAnnotations;
-   using Data.Models;
    using Microsoft.AspNetCore.Identity;
-   using static Data.DataConstants;
-
-
 
    public class User : IdentityUser
    {
       [Required]
-      [MinLength(UserNameMinLenght)]
-      [MaxLength(UserNameMaxLenght)]
+      [MinLength(DataConstants.UserNameMinLenght)]
+      [MaxLength(DataConstants.UserNameMaxLenght)]
       public string Name { get; set; }
 
       public DateTime Birthdate { get; set; }

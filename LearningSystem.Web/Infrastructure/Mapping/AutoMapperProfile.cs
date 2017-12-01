@@ -4,6 +4,7 @@ namespace LearningSystem.Web.Infrastructure.Mapping
    using System;
    using System.Linq;
    using AutoMapper;
+   using Common.Mapping;
 
    public class AutoMapperProfile : Profile
    {

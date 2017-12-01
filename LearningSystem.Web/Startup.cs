@@ -2,9 +2,8 @@
 {
    using AutoMapper;
    using Data;
+   using Data.Models;
    using Infrastructure.Extensions;
-   using Models;
-   using Services;
    using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Hosting;
    using Microsoft.AspNetCore.Identity;
@@ -42,10 +41,10 @@
 
          
 
-         services.AddAutoMapper();
          services.AddMvc();
          services.AddAntiforgery();
          services.AddDomainServices();
+         services.AddAutoMapper();
       }
 
       // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

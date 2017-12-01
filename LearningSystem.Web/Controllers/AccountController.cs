@@ -3,6 +3,7 @@
    using System;
    using System.Security.Claims;
    using System.Threading.Tasks;
+   using Data.Models;
    using Infrastructure.Extensions;
    using Models;
    using Models.AccountViewModels;

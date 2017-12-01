@@ -5,6 +5,7 @@ namespace LearningSystem.Web.Controllers
 {
    using System.Text.Encodings.Web;
    using System.Threading.Tasks;
+   using Data.Models;
    using Microsoft.AspNetCore.Authentication;
    using Microsoft.AspNetCore.Authorization;
    using Microsoft.AspNetCore.Identity;

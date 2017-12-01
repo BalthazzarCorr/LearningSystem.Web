@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AdminUserListingModel>
+@{
+   ViewData["Title"] = "User Administration";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Username
+            </th>
+
+            <th>
+                E-mail
+            </th>
+        </tr>
+    </thead> 
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <th>
+                @user.Username
+            </th>
+
+            <th>
+                @user.Email
+            </th>
+           
+        </tr>
+    }
+    </tbody>
+</table>

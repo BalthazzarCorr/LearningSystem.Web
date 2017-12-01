@@ -2,7 +2,6 @@
 {
    using System;
    using System.ComponentModel.DataAnnotations;
-   using Web.Models;
    using static DataConstants;
 
    public class Article

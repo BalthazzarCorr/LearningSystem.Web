@@ -1,7 +1,5 @@
 ﻿namespace LearningSystem.Data.Models
 {
-   using Web.Models;
-
    public class StudentCourse
     {
        public string StudentId { get; set; }

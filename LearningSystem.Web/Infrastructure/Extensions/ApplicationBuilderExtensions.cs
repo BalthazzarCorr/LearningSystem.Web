@@ -3,6 +3,7 @@
    using System;
    using System.Threading.Tasks;
    using Data;
+   using Data.Models;
    using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Identity;
    using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@
             var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
             Task.Run(async () =>
-            {
+            { 
                var adminName = WebConstants.AdministratorRole;
 
 
