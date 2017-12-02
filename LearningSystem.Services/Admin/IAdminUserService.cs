@@ -1,10 +1,11 @@
 ﻿namespace LearningSystem.Services.Admin
 {
    using System.Collections.Generic;
+   using System.Threading.Tasks;
    using Models;
 
    public interface IAdminUserService
    {
-      IEnumerable<AdminUserListingModel> All();
+    Task<IEnumerable<AdminUserListingModel>> AllAsync();
    }
 }

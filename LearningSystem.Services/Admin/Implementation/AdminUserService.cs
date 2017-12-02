@@ -1,9 +1,10 @@
 ﻿namespace LearningSystem.Services.Admin.Implementation
 {
    using System.Collections.Generic;
-   using System.Linq;
+   using System.Threading.Tasks;
    using AutoMapper.QueryableExtensions;
    using Data;
+   using Microsoft.EntityFrameworkCore;
    using Models;
 
    public class AdminUserService : IAdminUserService
@@ -15,7 +16,7 @@
          this.db = db;
       }
 
-      public IEnumerable<AdminUserListingModel> All()
-         => this.db.Users.ProjectTo<AdminUserListingModel>().ToList();
+      public async Task<IEnumerable<AdminUserListingModel>> AllAsync()
+         =>  await this.db.Users.ProjectTo<AdminUserListingModel>().ToListAsync();
    }
 }

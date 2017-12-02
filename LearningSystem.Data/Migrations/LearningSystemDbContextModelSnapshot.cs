@@ -10,6 +10,7 @@ using System;
 
 namespace LearningSystem.Data.Migrations
 {
+    [DbContext(typeof(LearningSystemDbContext))]
     partial class LearningSystemDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -23,7 +24,7 @@ namespace LearningSystem.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-                   
+
                     b.Property<string>("AuthorId");
 
                     b.Property<string>("Content")
@@ -60,7 +61,8 @@ namespace LearningSystem.Data.Migrations
 
                     b.Property<DateTime>("StartDate");
 
-                    b.Property<string>("TrainerId");
+                    b.Property<string>("TrainerId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -82,7 +84,7 @@ namespace LearningSystem.Data.Migrations
                     b.ToTable("StudentCourse");
                 });
 
-            modelBuilder.Entity("LearningSystem.Web.Models.User", b =>
+            modelBuilder.Entity("LearningSystem.Data.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -249,16 +251,17 @@ namespace LearningSystem.Data.Migrations
 
             modelBuilder.Entity("LearningSystem.Data.Models.Article", b =>
                 {
-                    b.HasOne("LearningSystem.Web.Models.User", "Author")
+                    b.HasOne("LearningSystem.Data.Models.User", "Author")
                         .WithMany("Articles")
                         .HasForeignKey("AuthorId");
                 });
 
             modelBuilder.Entity("LearningSystem.Data.Models.Course", b =>
                 {
-                    b.HasOne("LearningSystem.Web.Models.User", "Trainer")
+                    b.HasOne("LearningSystem.Data.Models.User", "Trainer")
                         .WithMany("Trainings")
-                        .HasForeignKey("TrainerId");
+                        .HasForeignKey("TrainerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("LearningSystem.Data.Models.StudentCourse", b =>
@@ -268,7 +271,7 @@ namespace LearningSystem.Data.Migrations
                         .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("LearningSystem.Web.Models.User", "Student")
+                    b.HasOne("LearningSystem.Data.Models.User", "Student")
                         .WithMany("Courses")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -284,7 +287,7 @@ namespace LearningSystem.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("LearningSystem.Web.Models.User")
+                    b.HasOne("LearningSystem.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -292,7 +295,7 @@ namespace LearningSystem.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("LearningSystem.Web.Models.User")
+                    b.HasOne("LearningSystem.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -305,7 +308,7 @@ namespace LearningSystem.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("LearningSystem.Web.Models.User")
+                    b.HasOne("LearningSystem.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -313,7 +316,7 @@ namespace LearningSystem.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("LearningSystem.Web.Models.User")
+                    b.HasOne("LearningSystem.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

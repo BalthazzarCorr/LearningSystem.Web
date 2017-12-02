@@ -17,6 +17,7 @@
       [MaxLength(CourseDescriptionMaxLength)]
       public string Description { get; set; }
 
+     
       public string TrainerId { get; set; }
 
       public DateTime StartDate { get; set; }

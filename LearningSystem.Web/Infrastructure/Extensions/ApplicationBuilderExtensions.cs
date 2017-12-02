@@ -8,7 +8,6 @@
    using Microsoft.AspNetCore.Identity;
    using Microsoft.EntityFrameworkCore;
    using Microsoft.Extensions.DependencyInjection;
-   using Models;
 
    public static class ApplicationBuilderExtensions
    {
@@ -29,26 +28,26 @@
                var adminName = WebConstants.AdministratorRole;
 
 
-               var roles = new[]
-               {
+            var roles = new[]
+            {
                   adminName,
                   WebConstants.BlogAuthorRole,
                   WebConstants.TrainerRole
                };
 
 
-               foreach (var role in roles)
+            foreach (var role in roles)
+            {
+               var roleExists = await roleManager.RoleExistsAsync(role);
+
+
+               if (!roleExists)
                {
-                  var roleExists = await roleManager.RoleExistsAsync(role);
-
-
-                  if (!roleExists)
+                  await roleManager.CreateAsync(new IdentityRole
                   {
-                     await roleManager.CreateAsync(new IdentityRole
-                     {
-                        Name = role
-                     });
-                  }
+                     Name = role
+                  });
+               }
                }
 
 

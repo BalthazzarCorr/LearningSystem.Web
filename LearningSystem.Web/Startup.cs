@@ -4,9 +4,11 @@
    using Data;
    using Data.Models;
    using Infrastructure.Extensions;
+   using Microsoft.AspNetCore.Antiforgery.Internal;
    using Microsoft.AspNetCore.Builder;
    using Microsoft.AspNetCore.Hosting;
    using Microsoft.AspNetCore.Identity;
+   using Microsoft.AspNetCore.Mvc;
    using Microsoft.EntityFrameworkCore;
    using Microsoft.Extensions.Configuration;
    using Microsoft.Extensions.DependencyInjection;
@@ -41,7 +43,7 @@
 
          
 
-         services.AddMvc();
+         services.AddMvc(optinos => optinos.Filters.Add<AutoValidateAntiforgeryTokenAttribute>());
          services.AddAntiforgery();
          services.AddDomainServices();
          services.AddAutoMapper();
