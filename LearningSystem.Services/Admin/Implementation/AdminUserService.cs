@@ -18,5 +18,7 @@
 
       public async Task<IEnumerable<AdminUserListingModel>> AllAsync()
          =>  await this.db.Users.ProjectTo<AdminUserListingModel>().ToListAsync();
+
+      
    }
 }
