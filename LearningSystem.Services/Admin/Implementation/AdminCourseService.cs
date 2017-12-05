@@ -14,7 +14,7 @@
          this._db = db;
       }
 
-      public async Task Create(string name, string description, DateTime startDate, DateTime endDate, string trainerId)
+      public async Task CreateAsync(string name, string description, DateTime startDate, DateTime endDate, string trainerId)
       {
          var course =  new Course
          {

@@ -43,7 +43,7 @@
             return View(model);
          }
 
-         await this._courses.Create(
+         await this._courses.CreateAsync(
             model.Name,
             model.Description,
             model.StartDate,

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ArticleListingModel>
+@{
+    ViewData["Title"] = "All Articles ";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>
+            Title   
+        </th>
+
+        <th>
+           Author
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <th>
+                @user.Title
+            </th>
+
+            <th>
+                @user.AuthorId
+            </th>
+            
+        </tr>
+    }
+    </tbody>
+</table>
