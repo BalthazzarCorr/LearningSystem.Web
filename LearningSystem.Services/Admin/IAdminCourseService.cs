@@ -5,6 +5,6 @@
 
    public interface IAdminCourseService
    {
-      Task Create(string name,string description,DateTime startDate,DateTime endDate,string trainerId);
+      Task CreateAsync(string name,string description,DateTime startDate,DateTime endDate,string trainerId);
    }
 }
