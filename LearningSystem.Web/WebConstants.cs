@@ -1,5 +1,7 @@
 ﻿namespace LearningSystem.Web
 {
+   
+
    public class WebConstants
    {
 
