@@ -8,6 +8,10 @@
    {
       Task CreateAsync(string title, string content, string authorId);
 
-      Task<IEnumerable<ArticleListingModel>> AllAsync();
+      Task<ArticleDetailsModel> ArticleDetails(int id);
+         
+      Task<int> TotalAsyncArticles();
+
+      Task<IEnumerable<ArticleListingModel>> AllAsync(int page = 1);
    }
 }

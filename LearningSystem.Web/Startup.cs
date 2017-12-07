@@ -44,6 +44,7 @@
          
 
          services.AddMvc(optinos => optinos.Filters.Add<AutoValidateAntiforgeryTokenAttribute>());
+         services.AddRouting(routing => routing.LowercaseUrls = true);
          services.AddAntiforgery();
          services.AddDomainServices();
          services.AddAutoMapper();
@@ -73,6 +74,12 @@
 
          app.UseMvc(routes =>
          {
+            routes.MapRoute(
+               name: "blog",
+               template: "blog/articles/details/{id}/{title}",
+               defaults:new {area="Blog", controller="Articles",action="Details"}
+            );
+
             routes.MapRoute(
                name: "areas",
                template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"

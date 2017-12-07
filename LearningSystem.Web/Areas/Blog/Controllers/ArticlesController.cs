@@ -3,6 +3,7 @@
    using System.Threading.Tasks;
    using Data.Models;
    using Infrastructure.Filters;
+   using Infrastructure.Extensions;
    using Microsoft.AspNetCore.Authorization;
    using Microsoft.AspNetCore.Identity;
    using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,14 @@
       public IActionResult Create() => View();
 
       [AllowAnonymous]
-      public IActionResult Index()
+      public async Task<IActionResult> Index(int page = 1)
       {
-         return View();
+         return   View(new ArticleListingViewModel()
+         {
+            Articles = await this._articles.AllAsync(page),
+            TotalArticles = await this._articles.TotalAsyncArticles(),
+            CurrentPage = page
+         });
       }
 
       [HttpPost]
@@ -50,6 +56,10 @@
          return RedirectToAction(nameof(Index));
         
       }
+
+      [AllowAnonymous]
+      public async Task<IActionResult> Details(int id)
+         => this.ViewOrNotFound(await this._articles.ArticleDetails(id));
 
    }
 }
