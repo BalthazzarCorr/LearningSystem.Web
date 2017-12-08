@@ -46,6 +46,7 @@
          services.AddMvc(optinos => optinos.Filters.Add<AutoValidateAntiforgeryTokenAttribute>());
          services.AddRouting(routing => routing.LowercaseUrls = true);
          services.AddAntiforgery();
+         services.AddSession();
          services.AddDomainServices();
          services.AddAutoMapper();
 

@@ -2,9 +2,10 @@
 {
    using System.Collections.Generic;
    using System.Threading.Tasks;
+   using Models;
 
    public interface ICourseService
    {
-      Task<IEnumerable<ICourseService>> Active();
+      Task<IEnumerable<CourseListingServiceModel>> Active();
    }
 }

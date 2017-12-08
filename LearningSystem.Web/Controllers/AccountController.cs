@@ -76,11 +76,14 @@
                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                return View(model);
             }
+           
          }
 
          // If we got this far, something failed, redisplay form
          return View(model);
       }
+
+      
 
       [HttpGet]
       [AllowAnonymous]
