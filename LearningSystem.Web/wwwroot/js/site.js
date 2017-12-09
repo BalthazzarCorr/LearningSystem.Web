@@ -161,5 +161,5 @@ function draw() {
     nodes = new_nodes;
 }
 
-document.onclick = function () { rebuild(true); }
+document.onclick = function () { rebuild(false); }
 init();
