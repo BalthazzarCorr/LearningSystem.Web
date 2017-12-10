@@ -26,6 +26,6 @@
 
       public User Trainer { get; set; }
 
-      public List<StudentCourse> Studnets { get; set; } = new List<StudentCourse>();
+      public List<StudentCourse> Students { get; set; } = new List<StudentCourse>();
    }
 }

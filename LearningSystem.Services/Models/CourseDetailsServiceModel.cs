@@ -25,6 +25,6 @@
       public void ConfigureMapping(Profile mapper)
          => mapper.CreateMap<Course, CourseDetailsServiceModel>()
             .ForMember(c => c.Trainer, cfg => cfg.MapFrom(c => c.Trainer.UserName))
-            .ForMember(c => c.Students, cfg => cfg.MapFrom(c => c.Studnets.Count));
+            .ForMember(c => c.Students, cfg => cfg.MapFrom(c => c.Students.Count));
    }
 }

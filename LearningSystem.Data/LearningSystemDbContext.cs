@@ -21,7 +21,7 @@
 
          builder.Entity<StudentCourse>().HasOne(c => c.Student).WithMany(s => s.Courses).HasForeignKey(x=>x.StudentId);
 
-         builder.Entity<StudentCourse>().HasOne(c => c.Course).WithMany(s => s.Studnets).HasForeignKey(c => c.CourseId);
+         builder.Entity<StudentCourse>().HasOne(c => c.Course).WithMany(s => s.Students).HasForeignKey(c => c.CourseId);
 
 
          builder.Entity<Course>().HasOne(c => c.Trainer).WithMany(c => c.Trainings).HasForeignKey(c => c.TrainerId).OnDelete(DeleteBehavior.Restrict);

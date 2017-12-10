@@ -62,5 +62,23 @@
          return RedirectToAction(nameof(Details), new {id});
       }
 
+      [Authorize]
+      [HttpPost]
+      public async Task<IActionResult> SignOut(int id)
+      {
+         var userId = this._userManager.GetUserId(User);
+
+         var success = await this._courses.SignOutUser(id, userId);
+
+         if (!success)
+         {
+            return BadRequest();
+         }
+
+         TempData.AddSuccessMessage("Sorry to see you go!");
+
+         return RedirectToAction(nameof(Details), new {id});
+      }
+
    }
 }

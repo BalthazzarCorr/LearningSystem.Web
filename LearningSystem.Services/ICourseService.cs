@@ -11,7 +11,9 @@
       Task<bool> UserIsSignedInCourse(int courseId, string userId);
 
       Task<bool> SignInUser(int courseId,string userId);
-     
-      Task<IEnumerable<CourseListingServiceModel>> Active();
+
+      Task<bool> SignOutUser(int courseId, string userId);
+         
+     Task<IEnumerable<CourseListingServiceModel>> Active();
    }
 }
