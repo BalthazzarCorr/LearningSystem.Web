@@ -6,52 +6,110 @@
 
 <h1>@ViewData["Title"]</h1>
 
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add User</button><br /><br />
+
 <table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>
-                Username
-            </th>
+<thead>
+<tr>
+    <th>
+        Username
+    </th>
 
-            <th>
-                E-mail
-            </th>
-        </tr>
-    </thead>
-    <tbody id="ajaxResponse">
-        @*@foreach (var user in Model.Users)
-            {
-                <tr>
-                    <th>
-                        @user.Username
-                    </th>
+    <th>
+        E-mail
+    </th>
+    <th>
+        Role
+    </th>
+</tr>
+</thead>
+    
 
-                    <th>
-                        @user.Email
-                    </th>
-                    <th>
-                        <form asp-controller="Users" asp-action="AddToRole">
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <input type="hidden" name="UserId" value="@user.Id" />
-                                    <select name="Role" asp-items="Model.Roles" class="form-control"></select>
-                                </div>
-                                <div class="col-md-2">
-                                    <input class="btn btn-sm btn-primary" type="submit" value="Add Role" />
-                                </div>
+<tbody>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <th>
+                    @user.Username
+                </th>
+
+                <th>
+                    @user.Email
+                </th>
+                <th>
+                    <form asp-controller="Users" asp-action="AddToRole">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="hidden" name="UserId" value="@user.Id" />
+                                <select name="Role" asp-items="Model.Roles" class="form-control"></select>
                             </div>
-                        </form>
-                    </th>
-
+                            <div class="col-md-2">
+                                <input class="btn btn-sm btn-primary" type="submit" value="Add Role" />
+                            </div>
+                        </div>
+                    </form>
+                </th>
                 </tr>
-            }*@
-    </tbody>
-
-</table>
-
-<br />
 
 
+                }
+
+        </tbody>
+    </table>
 
 
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<button type="button" class="close" data-dissmiss="modal"><span aria-hidden="true">×</span></button>*@
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" id="myModalLabel">Add Employee</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="EmployeeId">ID</label>
+                            <input type="text" class="form-control" id="EmployeeID" placeholder="Id" disabled="disabled" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Username">Username</label>
+                            <input type="text" class="form-control" id="Username" placeholder="Username" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Age">Name</label>
+                            <input type="text" class="form-control" id="Name" placeholder="Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <input type="text" class="form-control" id="Email" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password</label>
+                            <input type="password" class="form-control" id="Password" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="ConfirmPassword">ConfirmPassword</label>
+                            <input type="password" class="form-control" id="ConfirmPassword" placeholder="ConfirmPassword" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Birthdate">Birthdate</label>
+                            <input type="date" class="form-control" id="Birthdate" placeholder="Birthdate" />
+                        </div>
 
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @section Scripts{
+        <script src="~/js/AllUserAjax.js"></script>
+    }

@@ -66,7 +66,7 @@
                      Birthdate = DateTime.UtcNow,
                      SecurityStamp = "S0m3R4nd0mV4lu3"
                   };
-                  var result = await userManager.CreateAsync(adminUser, "admin12");
+                  await userManager.CreateAsync(adminUser, "admin12");
                   await userManager.AddToRoleAsync(adminUser, adminName);
                }
             }).Wait();
