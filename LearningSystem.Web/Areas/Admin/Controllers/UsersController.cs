@@ -1,14 +1,12 @@
 ﻿namespace LearningSystem.Web.Areas.Admin.Controllers
 {
-   using System.Linq;
    using System.Threading.Tasks;
    using Data.Models;
    using Infrastructure.Extensions;
    using Microsoft.AspNetCore.Identity;
    using Microsoft.AspNetCore.Mvc;
-   using Microsoft.AspNetCore.Mvc.Rendering;
-   using Microsoft.EntityFrameworkCore;
    using Models.Users;
+   using Newtonsoft.Json;
    using Services.Admin;
 
 
@@ -28,23 +26,36 @@
       }
 
 
+
+
+
       public async Task<IActionResult> Index()
       {
          var users = await this._users.AllAsync();
 
-         var roles = await this._roleManager.Roles.Select(r => new SelectListItem
-         {
-            Text = r.Name,
-            Value = r.Name
-         }).ToListAsync();
+         //var roles = await this._roleManager.Roles.Select(r => new SelectListItem
+         //{
+         //   Text = r.Name,
+         //   Value = r.Name
+         //}).ToListAsync();
 
-         return View(new AdminUsersViewListingModel
-         {
-            Users = users,
-            Roles = roles
 
-         });
+         //return View(new AdminUsersViewListingModel
+         //{
+         //   Users = users,
+         //   Roles = roles
+
+         //});
+
+         return View();
       }
+
+
+      public JsonResult ListAll()
+            =>Json(_users.AllAsync().Result);
+
+         
+      
 
       [HttpPost]
       public async Task<IActionResult> AddToRole(AddUserToRoleFormModel model)
